@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Wellness Hub</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 40px 0;
+            background-color: #e9ecef;
+        }
+
+        .hero-image {
+            width: 40%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content {
+            width: 50%;
+            text-align: left;
+        }
+
+        .hero-content h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #218838;
+        }
+
+        /* Quotes Section Styles */
+        .quotes {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px 0;
+            background-color: #fff;
+        }
+
+        .quote {
+            width: 30%;
+            text-align: center;
+            font-style: italic;
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        /* Features Section Styles */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 0;
+            background-color: #f8f9fa;
+        }
+
+        .feature {
+            width: 30%;
+            text-align: center;
+        }
+
+        .feature img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .feature-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-link:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning">Learning</a></li>
+            <li><a href="/quiz">Quiz</a></li>
+            <li><a href="/game">Games</a></li>
+            <li><a href="/leaderboard">Leaderboard</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Welcome to Our Health & Wellness Hub!</h1>
+        <p>Your journey to a healthier and happier you starts here.</p>
+    </header>
+
+    <section class="hero">
+        <img src="{{ url_for('static', filename='images/hero_image.jpg') }}" alt="Healthy Lifestyle" class="hero-image">
+        <div class="hero-content">
+            <h2>Empowering You to Live Well</h2>
+            <p>Explore resources, learn valuable tips, and engage in fun activities to enhance your overall well-being.</p>
+            <a href="/learning" class="cta-button">Start Learning</a>
+        </div>
+    </section>
+
+    <section class="quotes">
+        <div class="quote">
+            <blockquote>"The greatest wealth is health."</blockquote>
+            <p>- Virgil</p>
+        </div>
+        <div class="quote">
+            <blockquote>"Take care of your body. It's the only place you have to live."</blockquote>
+            <p>- Jim Rohn</p>
+        </div>
+        <div class="quote">
+            <blockquote>"Health is not valued until sickness comes."</blockquote>
+            <p>- Thomas Fuller</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/learning_icon.png') }}" alt="Learning">
+            <h3>Explore Health Topics</h3>
+            <p>Dive into various health and wellness topics, from nutrition to mental health.</p>
+            <a href="/learning" class="feature-link">Learn More</a>
+        </div>
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/quiz_icon.png') }}" alt="Quiz">
+            <h3>Test Your Knowledge</h3>
+            <p>Take fun and engaging quizzes to test your understanding of health concepts.</p>
+            <a href="/quiz" class="feature-link">Take Quiz</a>
+        </div>
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/game_icon.png') }}" alt="Games">
+            <h3>Play Health Games</h3>
+            <p>Enjoy interactive games that make learning about health fun and exciting.</p>
+            <a href="/game" class="feature-link">Play Games</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Health & Wellness Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

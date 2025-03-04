@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <title>Word Scramble Game</title>
+    <style>
+      .game-container {
+        text-align: center;
+        padding: 20px;
+      }
+      #scrambled-word {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        padding: 10px;
+        font-size: 1.2em;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 1.2em;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #message {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Word Scramble Game</h1>
+      <p>Unscramble the health-related word!</p>
+
+      <div id="scrambled-word"></div>
+      <input type="text" id="user-guess" placeholder="Enter your guess" />
+      <button onclick="checkGuess()">Check</button>
+
+      <div id="message"></div>
+    </div>
+
+    <script>
+      const words = [
+        "nutrition",
+        "exercise",
+        "hydration",
+        "mindfulness",
+        "hygiene",
+      ];
+      let currentWord = "";
+      let scrambledWord = "";
+
+      function scrambleWord(word) {
+        let arr = word.split("");
+        let n = arr.length;
+
+        for (let i = n - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr.join("");
+      }
+
+      function newWord() {
+        currentWord = words[Math.floor(Math.random() * words.length)];
+        scrambledWord = scrambleWord(currentWord);
+        document.getElementById("scrambled-word").textContent = scrambledWord;
+        document.getElementById("user-guess").value = ""; // Clear input
+        document.getElementById("message").textContent = ""; // Clear message
+      }
+
+      function checkGuess() {
+        const userGuess = document
+          .getElementById("user-guess")
+          .value.toLowerCase();
+        if (userGuess === currentWord) {
+          document.getElementById("message").textContent =
+            "Correct! Well done!";
+          newWord();
+        } else {
+          document.getElementById("message").textContent =
+            "Incorrect. Try again!";
+        }
+      }
+
+      // Initialize the game when the page loads
+      window.onload = newWord;
+    </script>
+  </body>
+</html>
